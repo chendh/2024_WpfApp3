@@ -5,8 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_2024_WpfApp3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="飲料點餐系統Ver1" Height="560" Width="575">
     <Grid>
+        <StackPanel Margin="10,10,0,0" HorizontalAlignment="Left" Width="395" Height="285" VerticalAlignment="Top" Background="#FFF6F3DF" >
+            <StackPanel Height="40" Margin="3,3,3,3" Background="#FFFAF5F5" Orientation="Horizontal">
+                <Label Content="紅茶大杯" FontSize="14" FontWeight="Bold" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Label Content="60元" FontSize="14" FontWeight="Bold" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <TextBox TextWrapping="Wrap" Width="120" FontSize="14" HorizontalContentAlignment="Right" Height="30" VerticalContentAlignment="Center" TextChanged="TextBox_TextChanged"/>
+            </StackPanel>
+            <StackPanel Height="40" Margin="3,3,3,3" Background="#FFFAF5F5" Orientation="Horizontal">
+                <Label Content="紅茶小杯" FontSize="14" FontWeight="Bold" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Label Content="40元" FontSize="14" FontWeight="Bold" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <TextBox TextWrapping="Wrap" Width="120" FontSize="14" HorizontalContentAlignment="Right" Height="30" VerticalContentAlignment="Center" TextChanged="TextBox_TextChanged"/>
+            </StackPanel>
+            <StackPanel Height="40" Margin="3,3,3,3" Background="#FFFAF5F5" Orientation="Horizontal">
+                <Label Content="綠茶大杯" FontSize="14" FontWeight="Bold" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Label Content="60元" FontSize="14" FontWeight="Bold" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <TextBox TextWrapping="Wrap" Width="120" FontSize="14" HorizontalContentAlignment="Right" Height="30" VerticalContentAlignment="Center" TextChanged="TextBox_TextChanged"/>
+            </StackPanel>
+            <StackPanel Height="40" Margin="3,3,3,3" Background="#FFFAF5F5" Orientation="Horizontal">
+                <Label Content="綠茶小杯" FontSize="14" FontWeight="Bold" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Label Content="40元" FontSize="14" FontWeight="Bold" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <TextBox TextWrapping="Wrap" Width="120" FontSize="14" HorizontalContentAlignment="Right" Height="30" VerticalContentAlignment="Center" TextChanged="TextBox_TextChanged"/>
+            </StackPanel>
+            <StackPanel Height="40" Margin="3,3,3,3" Background="#FFFAF5F5" Orientation="Horizontal">
+                <Label Content="可樂大杯" FontSize="14" FontWeight="Bold" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Label Content="50元" FontSize="14" FontWeight="Bold" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <TextBox TextWrapping="Wrap" Width="120" FontSize="14" HorizontalContentAlignment="Right" Height="30" VerticalContentAlignment="Center" TextChanged="TextBox_TextChanged"/>
+            </StackPanel>
+            <StackPanel Height="40" Margin="3,3,3,3" Background="#FFFAF5F5" Orientation="Horizontal">
+                <Label Content="可樂小杯" FontSize="14" FontWeight="Bold" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Label Content="30元" FontSize="14" FontWeight="Bold" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <TextBox TextWrapping="Wrap" Width="120" FontSize="14" HorizontalContentAlignment="Right" Height="30" VerticalContentAlignment="Center" TextChanged="TextBox_TextChanged"/>
+            </StackPanel>
+        </StackPanel>
+        <Button x:Name="OrderButton" Content="確定訂購" HorizontalAlignment="Left" Margin="425,10,0,0" VerticalAlignment="Top" Height="55" Width="110" FontSize="16" FontWeight="Bold"/>
+        <TextBlock x:Name="ResultTextBlock" HorizontalAlignment="Left" Margin="10,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="215" Width="540" Background="#FFE3EFC9" FontSize="14" Padding="5,5,5,5"/>
 
     </Grid>
 </Window>
