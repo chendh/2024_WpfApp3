@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace _2024_WpfApp3
 {
@@ -20,36 +21,64 @@ namespace _2024_WpfApp3
         public MainWindow()
         {
             InitializeComponent();
+
+            // 顯示飲料品項
+            DisplayDrinkMenu(drinks);
         }
 
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void DisplayDrinkMenu(Dictionary<string, int> drinks)
         {
-            var targetSlider = sender as Slider;
-            int amount = (int)targetSlider.Value;
-            var targetStackPanel = targetSlider.Parent as StackPanel;
-            var targetLabel = targetStackPanel.Children[0] as Label;
-            var drinkName = targetLabel.Content.ToString();
-            MessageBox.Show(drinkName + " " + amount + "杯，共" + drinks[drinkName] * amount + "元");
+            foreach (var drink in drinks)
+            {
+                var sp = new StackPanel
+                {
+                    Orientation = Orientation.Horizontal,
+                    Margin = new Thickness(3),
+                    Background = Brushes.LightBlue,
+                    Height = 35,
+                };
+
+                var cb = new CheckBox
+                {
+                    Content = drink.Key,
+                    FontFamily = new FontFamily("微軟正黑體"),
+                    FontSize = 16,
+                    FontWeight = FontWeights.Bold,
+                    Foreground = Brushes.Blue,
+                    Width = 150,
+                    Margin = new Thickness(5),
+                    VerticalContentAlignment = VerticalAlignment.Center,
+                };
+
+                var sl = new Slider
+                {
+                    Width =150,
+                    Minimum = 0,
+                    Maximum = 10,
+                    Value = 0,
+                    Margin = new Thickness(5),
+                    VerticalAlignment = VerticalAlignment.Center,
+                    IsSnapToTickEnabled = true,
+                };
+
+                var lb = new Label
+                {
+                    Content ="0",
+                    FontFamily = new FontFamily("微軟正黑體"),
+                    FontSize = 16,
+                    FontWeight = FontWeights.Bold,
+                    Foreground = Brushes.Red,
+                    VerticalContentAlignment = VerticalAlignment.Center,
+                    Width = 50,
+                }; 
+
+                sp.Children.Add(cb);
+                sp.Children.Add(sl);
+                sp.Children.Add(lb);
+
+                stackpanel_DrinkMenu.Children.Add(sp);
+            }
+
         }
-
-        //private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    var targetTextBox = sender as TextBox;
-
-        //    //MessageBox.Show(targetTextBox.Text);
-        //    int amount;
-        //    bool success = int.TryParse(targetTextBox.Text, out amount);
-
-        //    if (!success) MessageBox.Show("請輸入數字", "輸入錯誤");
-        //    else if (amount <= 0) MessageBox.Show("請輸入正整數", "輸入錯誤");
-        //    else
-        //    {
-        //        var targetStackPanel = targetTextBox.Parent as StackPanel;
-        //        var targetLabel = targetStackPanel.Children[0] as Label;
-        //        var drinkName = targetLabel.Content.ToString();
-
-        //        MessageBox.Show(drinkName + " " + amount + "杯，共" + drinks[drinkName] * amount + "元");
-        //    }
-        //}
     }
 }
