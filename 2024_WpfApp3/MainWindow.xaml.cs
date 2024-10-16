@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 
 namespace _2024_WpfApp3
@@ -17,7 +18,12 @@ namespace _2024_WpfApp3
             { "綠茶小杯", 30 },
             { "可樂大杯", 50 },
             { "可樂小杯", 30 },
+            { "咖啡大杯", 80 },
+            { "咖啡小杯", 50 }
         };
+
+        Dictionary<string, int> orders = new Dictionary<string, int>();
+        string takeout = "";
         public MainWindow()
         {
             InitializeComponent();
@@ -28,6 +34,8 @@ namespace _2024_WpfApp3
 
         private void DisplayDrinkMenu(Dictionary<string, int> drinks)
         {
+            //stackpanel_DrinkMenu.Children.Clear();
+            stackpanel_DrinkMenu.Height = 42 * drinks.Count;
             foreach (var drink in drinks)
             {
                 var sp = new StackPanel
@@ -50,6 +58,17 @@ namespace _2024_WpfApp3
                     VerticalContentAlignment = VerticalAlignment.Center,
                 };
 
+                var lb_price = new Label
+                {
+                    Content = $"{drink.Value}元",
+                    FontFamily = new FontFamily("微軟正黑體"),
+                    FontSize = 16,
+                    FontWeight = FontWeights.Bold,
+                    Foreground = Brushes.Green,
+                    Width = 60,
+                    VerticalContentAlignment = VerticalAlignment.Center,
+                };
+
                 var sl = new Slider
                 {
                     Width =150,
@@ -61,7 +80,7 @@ namespace _2024_WpfApp3
                     IsSnapToTickEnabled = true,
                 };
 
-                var lb = new Label
+                var lb_amount = new Label
                 {
                     Content ="0",
                     FontFamily = new FontFamily("微軟正黑體"),
@@ -70,15 +89,45 @@ namespace _2024_WpfApp3
                     Foreground = Brushes.Red,
                     VerticalContentAlignment = VerticalAlignment.Center,
                     Width = 50,
-                }; 
+                };
+
+                Binding myBinding = new Binding("Value");
+                myBinding.Source = sl;
+                lb_amount.SetBinding(ContentProperty, myBinding);
 
                 sp.Children.Add(cb);
+                sp.Children.Add(lb_price);
                 sp.Children.Add(sl);
-                sp.Children.Add(lb);
+                sp.Children.Add(lb_amount);
 
                 stackpanel_DrinkMenu.Children.Add(sp);
             }
 
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            var rb = sender as RadioButton;
+            if ( rb.IsChecked == true)
+            {
+                //MessageBox.Show(rb.Content.ToString());
+                takeout = rb.Content.ToString();
+            }
+        }
+
+        private void OrderButton_Click(object sender, RoutedEventArgs e)
+        {
+            orders.Clear();
+            for (int i=0; i< stackpanel_DrinkMenu.Children.Count; i++)
+            {
+                var sp = stackpanel_DrinkMenu.Children[i] as StackPanel;
+                var cb = sp.Children[0] as CheckBox;
+                var drinkName = cb.Content.ToString();
+                var sl = sp.Children[2] as Slider;
+                var amount = (int)sl.Value;
+
+                if (cb.IsChecked == true && amount >0) orders.Add(drinkName, amount);
+            }
         }
     }
 }
