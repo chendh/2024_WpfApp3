@@ -117,6 +117,7 @@ namespace _2024_WpfApp3
 
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
+            // 確認訂購內容
             orders.Clear();
             for (int i=0; i< stackpanel_DrinkMenu.Children.Count; i++)
             {
@@ -128,6 +129,41 @@ namespace _2024_WpfApp3
 
                 if (cb.IsChecked == true && amount >0) orders.Add(drinkName, amount);
             }
+
+            // 顯示訂購內容
+            string msg = "";
+            string discount_msg = "";
+            int total = 0;
+
+            msg += $"此次訂購為{takeout}，訂購內容如下：\n";
+            int num = 1;
+            foreach (var order in orders)
+            {
+                int subtotal = drinks[order.Key] * order.Value;
+                msg += $"{num}. {order.Key} x {order.Value}杯，小計{subtotal}元\n";
+                total += subtotal;
+                num++;
+            }
+            msg += $"總金額為{total}元";
+
+            int sellPrice = total;
+            if (total >= 500)
+            {
+                sellPrice = (int)(total * 0.8);
+                discount_msg = $"恭喜您獲得滿500元打8折優惠";
+            }
+            else if (total >= 300)
+            {
+                sellPrice = (int)(total * 0.9);
+                discount_msg = $"恭喜您獲得滿300元打9折優惠";
+            }
+            else
+            {
+                discount_msg = $"未達到任何折扣條件";
+            }
+            msg += $"\n{discount_msg}，原價為{total}元，售價為 {sellPrice}元。";
+
+            ResultTextBlock.Text = msg;
         }
     }
 }
