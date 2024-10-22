@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_2024_WpfApp3"
         mc:Ignorable="d"
-        Title="飲料點餐系統Ver3" Height="585" Width="600">
+        Title="飲料點餐系統Ver4" Height="585" Width="600" MinWidth="600">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="397*"/>
+            <ColumnDefinition Width="400*" MinWidth="400"/>
             <ColumnDefinition Width="203*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
