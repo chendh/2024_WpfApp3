@@ -5,12 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_2024_WpfApp3"
         mc:Ignorable="d"
-        Title="飲料點餐系統ver3" Height="620" Width="715">
+        Title="飲料點餐系統ver4" Height="700" Width="800" MinWidth="800" MinHeight="700">
     <Grid>
-        <StackPanel x:Name="stackpanel_DrinkMenu" Margin="20,65,0,0" Background="#FFF9EEEE" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="455" />
-        <Button x:Name="OrderButton" Content="確定訂購" Margin="0,25,30,0" VerticalAlignment="Top" Height="60" FontSize="18" FontWeight="Bold" HorizontalAlignment="Right" Width="100" Click="OrderButton_Click"/>
-        <TextBlock x:Name="ResultTextBlock" Margin="20,0,30,20" TextWrapping="Wrap" Background="#FFF7F3D4" Height="220" VerticalAlignment="Bottom" Padding="5,5,5,5" FontSize="16"/>
-        <GroupBox Header="內用/外帶" Margin="20,0,0,0" Background="#FFB4F4F3" Height="52" VerticalAlignment="Top" HorizontalAlignment="Left" Width="455">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="600*" MinWidth="600"/>
+            <ColumnDefinition Width="150*" MinWidth="150"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*" MinHeight="75"/>
+            <RowDefinition Height="374*" MinHeight="300"/>
+            <RowDefinition Height="231*"/>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="stackpanel_DrinkMenu" Margin="10,10,10,10" Background="#FFF9EEEE" Grid.Row="1" />
+        <Button x:Name="OrderButton" Content="確定訂購" Margin="10,30,10,0" FontSize="18" FontWeight="Bold" Click="OrderButton_Click" Grid.Column="1" Grid.Row="1" Height="57" VerticalAlignment="Top"/>
+        <TextBlock x:Name="ResultTextBlock" Margin="10,10,10,10" TextWrapping="Wrap" Background="#FFF7F3D4" Padding="5,5,5,5" FontSize="16" Grid.Row="2" Grid.ColumnSpan="2"/>
+        <GroupBox Header="內用/外帶" Margin="10,10,10,10" Background="#FFB4F4F3" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal" Height="30">
                 <RadioButton Content="內用" FontSize="16" FontWeight="Bold" Height="25" Width="80" Margin="10,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" Checked="RadioButton_Checked"/>
                 <RadioButton Content="外帶" FontSize="16" FontWeight="Bold" Height="25" Width="80" Margin="10,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" Checked="RadioButton_Checked"/>
